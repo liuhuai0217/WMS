@@ -1,0 +1,71 @@
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx" xsi:schemaLocation="         http://www.springframework.org/schema/beans          http://www.springframework.org/schema/beans/spring-beans.xsd          http://www.springframework.org/schema/context          http://www.springframework.org/schema/context/spring-context.xsd         http://www.springframework.org/schema/aop          http://www.springframework.org/schema/aop/spring-aop.xsd         http://www.springframework.org/schema/tx         http://www.springframework.org/schema/tx/spring-tx.xsd         ">
+     
+              <!-- 配置action -->
+		<bean id="employeeAction" class="com._520it.ssh.web.action.EmployeeAction" scope="prototype">
+			<property name="serviceDAO" ref="employeeService"/>
+			<property name="departmentService" ref="departmentService"/>
+			<property name="roleService" ref="roleService"/>
+		</bean>
+		
+		
+		<bean id="departmentAction" class="com._520it.ssh.web.action.DepartmentAction" scope="prototype">
+			<property name="departmentService" ref="departmentService"/>
+		</bean>
+		
+		<bean id="permissionAction" class="com._520it.ssh.web.action.PermissionAction" scope="prototype">
+			<property name="permissionService" ref="permissionService"/>
+		</bean>
+		
+		<bean id="roleAction" class="com._520it.ssh.web.action.RoleAction" scope="prototype">
+			<property name="roleService" ref="roleService"/>
+			<property name="permissionService" ref="permissionService"/>
+			 <property name="systemMenuService" ref="systemMenuService"/>
+		</bean>
+		<bean id="loginAction" class="com._520it.ssh.web.action.LoginAction" scope="prototype">
+		<property name="employeeService" ref="employeeService"/>
+		</bean>
+		<bean id="systemMenuAction" class="com._520it.ssh.web.action.SystemMenuAction" scope="prototype">
+		    <property name="systemMenuService" ref="systemMenuService"/>
+		</bean>
+		<bean id="productAction" class="com._520it.ssh.web.action.ProductAction" scope="prototype">
+		    <property name="productService" ref="productService"/>
+		    <property name="brandService" ref="brandService"/>
+		</bean>
+		<bean id="supplierAction" class="com._520it.ssh.web.action.SupplierAction" scope="prototype">
+		    <property name="supplierService" ref="supplierService"/>
+		</bean>
+		<bean id="brandAction" class="com._520it.ssh.web.action.BrandAction" scope="prototype">
+		    <property name="brandService" ref="brandService"/>
+		</bean>
+		<bean id="orderBillAction" class="com._520it.ssh.web.action.OrderBillAction" scope="prototype">
+		    <property name="orderBillService" ref="orderBillService"/>
+		    <property name="supplierService" ref="supplierService"/>
+		</bean>
+		<bean id="depotAction" class="com._520it.ssh.web.action.DepotAction" scope="prototype">
+		    <property name="depotService" ref="depotService"/>
+		</bean>
+		<bean id="stockIncomeBillAction" class="com._520it.ssh.web.action.StockIncomeBillAction" scope="prototype">
+			<property name="depotService" ref="depotService"/>
+	    	<property name="stockIncomeBillService" ref="stockIncomeBillService"/>
+		</bean>
+		<bean id="productStockAction" class="com._520it.ssh.web.action.ProductStockAction" scope="prototype">
+		    <property name="productStockService" ref="productStockService"/>
+		    <property name="depotService" ref="depotService"/>
+		    <property name="brandService" ref="brandService"/>
+		</bean>		
+		<bean id="clientAction" class="com._520it.ssh.web.action.ClientAction" scope="prototype">
+		    <property name="clientService" ref="clientService"/>
+		</bean>
+		<bean id="stockOutcomeBillAction" class="com._520it.ssh.web.action.StockOutcomeBillAction" scope="prototype">
+		    <property name="clientService" ref="clientService"/>
+		    <property name="depotService" ref="depotService"/>
+		    <property name="stockOutcomeBillService" ref="stockOutcomeBillService"/>
+		</bean>
+		<!-- 订货报表的action -->
+		<bean id="chartAction" class="com._520it.ssh.web.action.ChartAction" scope="prototype">
+			<property name="chartService" ref="chartService"/>
+			<property name="supplierService" ref="supplierService"/>
+			<property name="brandService" ref="brandService"/>
+			 <property name="clientService" ref="clientService"/>
+		</bean>
+</beans>

@@ -1,0 +1,26 @@
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx" xsi:schemaLocation="         http://www.springframework.org/schema/beans          http://www.springframework.org/schema/beans/spring-beans.xsd          http://www.springframework.org/schema/context          http://www.springframework.org/schema/context/spring-context.xsd         http://www.springframework.org/schema/aop          http://www.springframework.org/schema/aop/spring-aop.xsd         http://www.springframework.org/schema/tx         http://www.springframework.org/schema/tx/spring-tx.xsd         ">
+ 
+ <!-- 因为在所有的dao中 都有同一个属性  提取 -->
+		 <bean id="baseDAO" abstract="true">
+		        	<property name="sessionFactory" ref="sessionFactory"/>
+		 </bean>
+     
+         <!-- 配置的关于员工的实现类 主要包含了对员工的 增删改查的功能 -->
+		    <bean id="employeeDAO" class="com._520it.ssh.dao.impl.EmployeeDAOImpl" parent="baseDAO"/>
+		  	<bean id="departmentDAO" class="com._520it.ssh.dao.impl.DepartmentDAOImpl" parent="baseDAO"/>
+		  	<bean id="permissionDAO" class="com._520it.ssh.dao.impl.PermissionDAOImpl" parent="baseDAO"/>
+			<bean id="roleDAO" class="com._520it.ssh.dao.impl.RoleDAOImpl" parent="baseDAO"/> 
+			<bean id="systemMenuDAO" class="com._520it.ssh.dao.impl.SystemMenuDAOImpl" parent="baseDAO"/>
+			<bean id="productDAO" class="com._520it.ssh.dao.impl.ProductDAOImpl" parent="baseDAO"/>
+			<bean id="supplierDAO" class="com._520it.ssh.dao.impl.SupplierDAOImpl" parent="baseDAO"/>
+			<bean id="brandDAO" class="com._520it.ssh.dao.impl.BrandDAOImpl" parent="baseDAO"/>
+			<bean id="orderBillDAO" class="com._520it.ssh.dao.impl.OrderBillDAOImpl" parent="baseDAO"/>
+			<bean id="depotDAO" class="com._520it.ssh.dao.impl.DepotDAOImpl" parent="baseDAO"/>
+			<bean id="stockIncomeBillDAO" class="com._520it.ssh.dao.impl.StockIncomeBillDAOImpl" parent="baseDAO"/>
+			<bean id="productStockDAO" class="com._520it.ssh.dao.impl.ProductStockDAOImpl" parent="baseDAO"/>
+			<bean id="clientDAO" class="com._520it.ssh.dao.impl.ClientDAOImpl" parent="baseDAO"/>
+			<bean id="stockOutcomeBillDAO" class="com._520it.ssh.dao.impl.StockOutcomeBillDAOImpl" parent="baseDAO"/>
+			<bean id="chartDAO" class="com._520it.ssh.dao.impl.ChartDAOImpl" parent="baseDAO"/>
+			<bean id="saleAccountDAO" class="com._520it.ssh.dao.impl.SaleAccountDAOImpl" parent="baseDAO"/>
+
+</beans>
